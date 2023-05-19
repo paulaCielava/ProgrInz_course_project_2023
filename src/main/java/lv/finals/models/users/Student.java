@@ -1,0 +1,91 @@
+package lv.finals.models.users;
+
+import java.util.ArrayList;
+import java.util.Collection;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lv.finals.models.Course;
+
+@Table(name = "student_table")
+@Entity
+@Getter
+@Setter
+@NoArgsConstructor
+public class Student extends Person{
+	
+	//TODO izveidot dataJPA anotācijaas 
+	//TODO izveidot validāciju anotācijas
+	//TODO izveidot sasaisti ar Course klasi ManyToMany
+	@Column(name = "MatricumaNo")
+	@NotNull
+	@Pattern(regexp = "[0-9]{8,20}")
+	private String matriculaNo;
+	
+	@Column(name = "FinancialDept")
+	private boolean financialDept;
+
+	
+	@ManyToMany
+	@JoinTable(name = "student_debt_courses_table", joinColumns = @JoinColumn(name = "Idc"), inverseJoinColumns = @JoinColumn(name = "Idp"))
+	private Collection<Course> debtCourses = new ArrayList<>();
+	
+	
+	
+	
+	public Student(
+			@NotNull @Pattern(regexp = "[A-ZĀŠĒĢŪĪĶĻŅŽ]{1}[a-zēīļķšāžņģ\\ ]+") @Size(min = 3, max = 100) String name,
+			@NotNull @Pattern(regexp = "[A-ZĀŠĒĢŪĪĶĻŅŽ]{1}[a-zēīļķšāžņģ\\ ]+") @Size(min = 3, max = 100) String surname,
+			@NotNull @Pattern(regexp = "[0-9]{6}-[0-9]{5}") @Size(min = 12, max = 12) String personcode, User user,
+			@NotNull @Pattern(regexp = "[0-9]{8,20}") String matriculaNo, boolean financialDept) {
+		super(name, surname, personcode, user);
+		this.matriculaNo = matriculaNo;
+		this.financialDept = financialDept;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}
