@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.OneToOne;
@@ -23,6 +25,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Person {
 
 
@@ -53,6 +56,17 @@ public class Person {
 	@OneToOne
 	@JoinColumn(name = "Idu")
 	private User user;
+
+	public Person(
+			@NotNull @Pattern(regexp = "[A-ZĀŠĒĢŪĪĶĻŅŽ]{1}[a-zēīļķšāžņģ\\ ]+") @Size(min = 3, max = 100) String name,
+			@NotNull @Pattern(regexp = "[A-ZĀŠĒĢŪĪĶĻŅŽ]{1}[a-zēīļķšāžņģ\\ ]+") @Size(min = 3, max = 100) String surname,
+			@NotNull @Pattern(regexp = "[0-9]{6}-[0-9]{5}") @Size(min = 12, max = 12) String personcode, User user) {
+		super();
+		this.name = name;
+		this.surname = surname;
+		this.personcode = personcode;
+		this.user = user;
+	}
 	
 	
 	
