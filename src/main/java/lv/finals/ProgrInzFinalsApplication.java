@@ -42,7 +42,7 @@ public class ProgrInzFinalsApplication {
 				userRepo.save(us4);
 				
 				
-				Course c1 = new Course("Java", 4);
+				Course c1 = new Course("Javaa", 4);
 				Course c2 = new Course("Datastr", 2);
 				courseRepo.save(c1);
 				courseRepo.save(c2);

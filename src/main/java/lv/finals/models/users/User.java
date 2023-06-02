@@ -36,7 +36,7 @@ public class User {
 	@Column(name = "Password")
 	@NotNull
 	//TODO papildināt ar validāciju, kad ir zināms passwordEncoder
-	@Size(min = 8, max = 40)
+	@Size(min = 3, max = 40)
 	private String password; //TODO kad pievienos spring security tad jauzliek passwordEncoder
 	
 	
