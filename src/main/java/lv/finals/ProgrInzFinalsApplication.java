@@ -5,12 +5,14 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import lv.finals.models.Comments;
 import lv.finals.models.Course;
 import lv.finals.models.Thesis;
 import lv.finals.models.users.AcademicPersonel;
 import lv.finals.models.users.Degree;
 import lv.finals.models.users.Student;
 import lv.finals.models.users.User;
+import lv.finals.repos.ICommentsRepo;
 import lv.finals.repos.ICourseRepo;
 import lv.finals.repos.IThesisRepo;
 import lv.finals.users.repos.IAcademicPersonelRepo;
@@ -26,7 +28,7 @@ public class ProgrInzFinalsApplication {
 	}
 
 	@Bean
-	public CommandLineRunner testModel (ICourseRepo courseRepo, IThesisRepo thesisRepo, IAcademicPersonelRepo academicRepo, IPersonRepo personRepo, IStudentRepo studentRepo, IUserRepo userRepo) {
+	public CommandLineRunner testModel (ICourseRepo courseRepo, IThesisRepo thesisRepo, IAcademicPersonelRepo academicRepo, IPersonRepo personRepo, IStudentRepo studentRepo, IUserRepo userRepo, ICommentsRepo commentRepo) {
 		return new CommandLineRunner() {
 			
 			@Override
@@ -76,7 +78,10 @@ public class ProgrInzFinalsApplication {
 				academicRepo.save(ac1);
 				academicRepo.save(ac2);
 				
-				
+				Comments com1 = new Comments("Neprecizs nosaukums", ac2, th1);
+				Comments com2 = new Comments("Merki nav atbilssi", ac1, th1);
+				commentRepo.save(com1);
+				commentRepo.save(com2);
 				
 			}
 		};

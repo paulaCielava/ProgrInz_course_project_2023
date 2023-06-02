@@ -15,6 +15,7 @@ import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lv.finals.models.Comments;
 import lv.finals.models.Thesis;
 
 @Table(name = "academic_personel")
@@ -34,6 +35,18 @@ public class AcademicPersonel extends Person{
 	
 	@ManyToMany(mappedBy = "reviewers")
 	private Collection<Thesis> thesisForReviewers = new ArrayList<>();
+	
+	
+	@OneToMany(mappedBy = "academicPersonal")
+	private Collection<Comments> comments;
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	public void addThesisForReviewers (Thesis inputThesis) {

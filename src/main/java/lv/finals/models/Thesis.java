@@ -13,6 +13,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -82,6 +83,12 @@ public class Thesis {
 	@ManyToMany
 	@JoinTable(name = "thesisForReviewers", joinColumns = @JoinColumn(name = "Idt"), inverseJoinColumns = @JoinColumn(name = "Ida"))
 	private Collection<AcademicPersonel> reviewers = new ArrayList<>();
+	
+	
+	@OneToMany(mappedBy = "thesisComment")
+	private Collection<Comments> comment;
+	
+	
 	
 	
 	public void addReviewer(AcademicPersonel reviewer) {
