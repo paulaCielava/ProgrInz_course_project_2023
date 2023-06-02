@@ -1,10 +1,12 @@
 package lv.finals.models.users;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Getter;
@@ -27,9 +29,14 @@ public class AcademicPersonel extends Person{
 	@OneToMany(mappedBy = "supervisor")
 	private Collection<Thesis> thesis;
 	
+	@ManyToMany(mappedBy = "reviewers")
+	private Collection<Thesis> thesisForReviewers = new ArrayList<>();
 	
 	
-	
-	
+	public void addThesisForReviewers (Thesis reviewer) {
+		if (!thesisForReviewers.contains(reviewer)) {
+			thesisForReviewers.add(reviewer);
+		}
+	}
 	
 }

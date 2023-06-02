@@ -50,7 +50,7 @@ public class Course {
 	@Max(value = 20)
 	private int creditPoints;
 	
-	@ManyToMany(mappedBy = "debtourses")
+	@ManyToMany(mappedBy = "debtCourses")
 	private Collection<Student> debtStudents = new ArrayList<>();
 
 	//argumenta konstruktors 
