@@ -7,19 +7,23 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import lv.finals.models.users.Student;
 
 @Table(name = "thesis_table")
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
-@ToString
+//@ToString
 public class Thesis {
 	
 	@Setter(value = AccessLevel.NONE) // -> noņem anotāciju (set funkciju) tieši šim mainīgajam
@@ -58,8 +62,9 @@ public class Thesis {
 	@Column(name = "AccDateTime")
 	private LocalDateTime accDateTime;
 	
-	
-	
+	@ManyToOne
+	@JoinColumn(name = "Ids")
+	private Student student;
 	
 	
 	

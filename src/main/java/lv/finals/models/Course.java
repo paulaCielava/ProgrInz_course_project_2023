@@ -30,7 +30,7 @@ import lv.finals.models.users.Student;
 @Getter
 @Setter
 @NoArgsConstructor
-@ToString
+//@ToString
 public class Course {
 	
 	@Setter(value = AccessLevel.NONE) // -> noņem anotāciju (set funkciju) tieši šim mainīgajam

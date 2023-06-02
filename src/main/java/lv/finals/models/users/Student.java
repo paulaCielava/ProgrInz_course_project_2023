@@ -10,6 +10,7 @@ import jakarta.persistence.Inheritance;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
@@ -19,13 +20,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lv.finals.models.Course;
+import lv.finals.models.Thesis;
 
 @Table(name = "student_table")
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
-@AttributeOverride(name = "Idp", column = @Column(name = "Ids"))
+@AttributeOverride(name = "Idp", column = @Column(name = "Ids")) //pārsauc Id 
 public class Student extends Person{
 	
 	//TODO izveidot dataJPA anotācijaas 
@@ -43,6 +45,12 @@ public class Student extends Person{
 	@ManyToMany
 	@JoinTable(name = "student_debt_courses_table", joinColumns = @JoinColumn(name = "Idc"), inverseJoinColumns = @JoinColumn(name = "Idp"))
 	private Collection<Course> debtCourses = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "student")
+	private Collection<Thesis> thesis;
+	
+	
+	
 	
 	
 	
