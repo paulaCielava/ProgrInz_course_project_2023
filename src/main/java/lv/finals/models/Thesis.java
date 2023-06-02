@@ -90,6 +90,20 @@ public class Thesis {
 		}
 		
 	}
+
+
+	public Thesis(String titleEn, String titleLv, String aim, String tasks, Student student,
+			AcademicPersonel supervisor) {
+		super();
+		this.titleEn = titleEn;
+		this.titleLv = titleLv;
+		this.aim = aim;
+		this.tasks = tasks;
+		this.student = student;
+		this.supervisor = supervisor;
+		this.submitDateTime = LocalDateTime.now();
+		this.accStatus = AcceptanceStatus.submit;
+	}
 	
 	
 	

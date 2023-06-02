@@ -65,10 +65,14 @@ public class Student extends Person{
 		this.financialDept = financialDept;
 	}
 	
+	public void addDeptCourse (Course course) {
+		if(!debtCourses.contains(course)) {
+			debtCourses.add(course);
+		}
+	}
 	
 	
-	
-	
+	// TODO izveidot remove debtCourses
 	
 	
 	
