@@ -19,7 +19,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Table(name = "")
+@Table(name = "person_table")
 @Entity
 @MappedSuperclass
 @Getter

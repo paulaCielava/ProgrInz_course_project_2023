@@ -3,8 +3,10 @@ package lv.finals.models.users;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Inheritance;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
@@ -23,6 +25,7 @@ import lv.finals.models.Course;
 @Getter
 @Setter
 @NoArgsConstructor
+@AttributeOverride(name = "Idp", column = @Column(name = "Ids"))
 public class Student extends Person{
 	
 	//TODO izveidot dataJPA anotācijaas 
