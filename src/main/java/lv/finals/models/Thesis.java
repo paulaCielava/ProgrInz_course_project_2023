@@ -16,6 +16,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import lv.finals.models.users.AcademicPersonel;
 import lv.finals.models.users.Student;
 
 @Table(name = "thesis_table")
@@ -62,14 +63,17 @@ public class Thesis {
 	@Column(name = "AccDateTime")
 	private LocalDateTime accDateTime;
 	
+	
+	
 	@ManyToOne
 	@JoinColumn(name = "Ids")
 	private Student student;
 	
+	@ManyToOne
+	@JoinColumn(name = "Ida")
+	private AcademicPersonel supervisor;
 	
-	
-	
-	
+	// TODO ja nepieciešams izveidot saitu starp konsultantu, vērtētāju utt.
 	
 	
 	
